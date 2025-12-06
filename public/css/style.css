@@ -157,11 +157,6 @@ p {
     backface-visibility: hidden;
 }
 
-footer {
-    text-align: center;
-    margin-top: 20px;
-    color: white;
-}
 /*---------------------------------------------------------------------------------*/
 /*Nest Hub Max: 1280px x 800px*/
 @media screen and (width: 1280px) {
@@ -233,4 +228,5 @@ footer {
          rgba(0,212,255,1) 100%);
         color: white;
     }
+
 }
