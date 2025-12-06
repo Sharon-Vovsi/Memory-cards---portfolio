@@ -2,6 +2,7 @@
 if (process.env.NODE_ENV !== 'production') {
   require('dotenv').config()
 }
+console.log('SESSION_SECRET value:', process.env.SESSION_SECRET);
 
 // localhost port & imports
 const port = 3000
@@ -13,6 +14,9 @@ const flash = require('express-flash')
 const session = require('express-session')
 const methodOverride = require('method-override')
 
+// user login data
+const users = []
+
 // turns passport-config.js into a function
 const initializePassport = require('./passport-config')
 initializePassport(
@@ -20,9 +24,6 @@ initializePassport(
   username => users.find(user => user.username === username),
   id => users.find(user => user.id === id)
 )
-
-// user login data
-const users = []
 
 // veiw engine and dirname
 app.use(express.static('public'))
@@ -34,7 +35,7 @@ app.set('view-engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SESSION_SECRET || 'secret',
   resave: false,
   saveUninitialized: false
 }))
