@@ -31,7 +31,7 @@ app.use('/css', express.static(__dirname + 'public/css'))
 app.use('/js', express.static(__dirname + 'public/js'))
 app.use('/img', express.static(__dirname + 'public/img'))
 
-app.set('view-engine', 'ejs')
+app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
 app.use(session({
@@ -107,3 +107,4 @@ function checkNotAuthenticated(req, res, next) {
 
 // shows in console if port is active
 app.listen(port, () => console.info(`Listening on port ${port}`));
+
